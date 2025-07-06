@@ -1,10 +1,10 @@
-# MoonTV
+# Jiudutv
 
 <div align="center">
   <img src="public/logo.png" alt="LibreTV Logo" width="120">
 </div>
 
-> 🎬 **MoonTV** 是一个开箱即用的、跨平台的影视聚合播放器。它基于 **Next.js 14** + **Tailwind&nbsp;CSS** + **TypeScript** 构建，支持多资源搜索、在线播放、收藏同步、播放记录、本地/云端存储，让你可以随时随地畅享海量免费影视内容。
+> 🎬 **Jiudutv** 是一个开箱即用的、跨平台的影视聚合播放器。它基于 **Next.js 14** + **Tailwind&nbsp;CSS** + **TypeScript** 构建，支持多资源搜索、在线播放、收藏同步、播放记录、本地/云端存储，让你可以随时随地畅享海量免费影视内容。
 
 <div align="center">
 
@@ -111,7 +111,7 @@ docker run -d --name moontv -p 3000:3000 ghcr.io/senshinya/moontv:latest
 
 ```yaml
 services:
-  moontv:
+  Jiudutv:
     image: ghcr.io/senshinya/moontv:latest
     container_name: moontv
     restart: unless-stopped
@@ -128,7 +128,7 @@ services:
 
 ```yaml
 services:
-  moontv-core:
+  jiudutv-core:
     image: ghcr.io/senshinya/moontv:latest
     container_name: moontv
     restart: unless-stopped
@@ -141,9 +141,9 @@ services:
       - REDIS_URL=redis://moontv-redis:6379
       - NEXT_PUBLIC_ENABLE_REGISTER=true
     networks:
-      - moontv-network
+      - jiudutv-network
     depends_on:
-      - moontv-redis
+      - jiudutv-redis
     # 如需自定义配置，可挂载文件
     # volumes:
     #   - ./config.json:/app/config.json:ro
@@ -152,12 +152,12 @@ services:
     container_name: moontv-redis
     restart: unless-stopped
     networks:
-      - moontv-network
+      - jiudutv-network
     # 如需持久化
     # volumes:
     #   - ./data:/data
 networks:
-  moontv-network:
+  jiudutv-network:
     driver: bridge
 ```
 
