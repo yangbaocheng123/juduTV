@@ -113,7 +113,7 @@ docker run -d --name moontv -p 3000:3000 ghcr.io/senshinya/moontv:latest
 services:
   Jiudutv:
     image: ghcr.io/senshinya/moontv:latest
-    container_name: moontv
+    container_name: jiudutv
     restart: unless-stopped
     ports:
       - '3000:3000'
@@ -130,7 +130,7 @@ services:
 services:
   jiudutv-core:
     image: ghcr.io/senshinya/moontv:latest
-    container_name: moontv
+    container_name: jiudutv
     restart: unless-stopped
     ports:
       - '3000:3000'
@@ -138,7 +138,7 @@ services:
       - USERNAME=admin
       - PASSWORD=admin_password
       - NEXT_PUBLIC_STORAGE_TYPE=redis
-      - REDIS_URL=redis://moontv-redis:6379
+      - REDIS_URL=redis://jiudutv-redis:6379
       - NEXT_PUBLIC_ENABLE_REGISTER=true
     networks:
       - jiudutv-network
@@ -149,7 +149,7 @@ services:
     #   - ./config.json:/app/config.json:ro
   moontv-redis:
     image: redis
-    container_name: moontv-redis
+    container_name: iudutv-redis
     restart: unless-stopped
     networks:
       - jiudutv-network
@@ -206,7 +206,7 @@ networks:
   - `name`：在人机界面中展示的名称。
   - `detail`：（可选）部分无法通过 API 获取剧集详情的站点，需要提供网页详情根 URL，用于爬取。
 
-MoonTV 支持标准的苹果 CMS V10 API 格式。
+JiuduTV 支持标准的苹果 CMS V10 API 格式。
 
 修改后 **无需重新构建**，服务会在启动时读取一次。
 
